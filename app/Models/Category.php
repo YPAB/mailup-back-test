@@ -16,7 +16,7 @@ class Category extends Model
     public $timestamps = true;
     protected $dates = ['deleted_at'];
 
-    public function products(){
+     public function products(){
         return $this->hasMany(Product::class);
     }
 }

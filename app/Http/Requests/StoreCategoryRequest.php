@@ -24,7 +24,8 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories|max:100',
+            'brand_id'  => 'required|exists:brands,id',
+            'name'      => 'required|unique:categories|max:100',
         ];
     }
 }
