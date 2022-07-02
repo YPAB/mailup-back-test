@@ -9,6 +9,8 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
 
 class ProductController extends ApiController
 {
@@ -26,7 +28,8 @@ class ProductController extends ApiController
      */
     public function index()
     {
-        $products = Product::orderBy('id','DESC')->get();
+        $products = new ProductCollection(Product::with('brand','category')->get());
+
         return $this->success('OK',$products);
     }
 
@@ -54,6 +57,7 @@ class ProductController extends ApiController
      */
     public function show(Product $product)
     {
+        $product = new ProductResource(Product::with('brand','category')->findOrFail($product->id));
         return $this->success('OK',$product);
     }
 
