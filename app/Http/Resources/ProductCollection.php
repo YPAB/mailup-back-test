@@ -16,7 +16,6 @@ class ProductCollection extends ResourceCollection
     {
        // final array to be return.
         $products = [];
-
         foreach($this->collection as $product) {
 
 
@@ -33,6 +32,20 @@ class ProductCollection extends ResourceCollection
 
         }
 
-        return $products;
+        return [
+            'current_page' => $this->currentPage(),
+            'products' => $products,
+
+            'first_page_url' => $this->url(1),
+            'from' => $this->firstItem(),
+            'last_page' => $this->lastPage(),
+            'last_page_url' => $this->url($this->lastPage()),
+            'next_page_url' => $this->nextPageUrl(),
+            'path' => $this->path(),
+            'per_page' => $this->perPage(),
+            'prev_page_url' => $this->previousPageUrl(),
+            'to' => $this->lastItem(),
+            'total' => $this->total(),
+        ];
     }
 }

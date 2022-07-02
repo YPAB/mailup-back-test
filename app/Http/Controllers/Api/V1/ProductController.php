@@ -28,7 +28,7 @@ class ProductController extends ApiController
      */
     public function index()
     {
-        $products = new ProductCollection(Product::with('brand','category')->get());
+        $products = new ProductCollection(Product::with('brand','category')->paginate(3));
 
         return $this->success('OK',$products);
     }
