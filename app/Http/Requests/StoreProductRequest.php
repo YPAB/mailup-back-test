@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\CheckPriceRule;
+use Illuminate\Support\Facades\Auth;
 
 class StoreProductRequest extends FormRequest
 {
@@ -26,6 +27,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'brand_id'     => 'required|exists:brands,id',
+            'category_id'  => 'required|exists:categories,id',
             'name'         => 'required|unique:products,name|max:200',
             'description'  => 'nullable',
             'image'        => 'required|mimes:jpg,jpeg,png|max:1024',

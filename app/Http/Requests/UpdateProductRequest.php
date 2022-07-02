@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Rules\CheckPriceRule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return True;
     }
 
     /**
@@ -24,7 +26,14 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'brand_id'     => 'required|exists:brands,id',
+            'category_id'  => 'required|exists:categories,id',
+            'name'         => 'required|max:200|unique:products,name,'.$this->product->id,
+            'description'  => 'nullable',
+            'image'        => 'required|mimes:jpg,jpeg,png|max:1024',
+            'price'        =>  ['required', new CheckPriceRule()],
+            'price_sale'   =>  ['required', new CheckPriceRule()],
+            'stock'        => 'required|integer'
         ];
     }
 }

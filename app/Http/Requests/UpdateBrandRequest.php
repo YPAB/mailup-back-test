@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateBrandRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,7 @@ class UpdateBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:brands|max:100,'.$this->brand->id,
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreCategoryRequest extends FormRequest
 {
@@ -13,6 +14,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize()
     {
+        //Auth::check()
         return true;
     }
 
@@ -24,7 +26,6 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'brand_id'  => 'required|exists:brands,id',
             'name'      => 'required|unique:categories|max:100',
         ];
     }
