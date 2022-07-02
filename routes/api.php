@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ Route::apiResource('v1/brands', App\Http\Controllers\Api\V1\BrandController::cla
 Route::apiResource('v1/categories', App\Http\Controllers\Api\V1\CategoryController::class)->middleware('api');
 
 Route::apiResource('v1/products', App\Http\Controllers\Api\V1\ProductController::class)->middleware('api');
+Route::get('v1/products/search/{search?}',[ProductController::class, 'searchProducts'])->name('products.search')->middleware('api');

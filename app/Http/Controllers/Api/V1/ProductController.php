@@ -18,7 +18,7 @@ class ProductController extends ApiController
     public function __construct()
     
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show','store','update','destroy']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show','store','update','destroy','searchProducts']]);
     }
     
     /**
@@ -26,9 +26,14 @@ class ProductController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = new ProductCollection(Product::with('brand','category')->paginate(3));
+        $search = $request->input('search');
+
+        $products = new ProductCollection (Product::with('brand','category')
+                ->where('name','like','%'.$search.'%')
+                ->orderBy('id')
+                ->paginate(5));
 
         return $this->success('OK',$products);
     }
@@ -105,5 +110,17 @@ class ProductController extends ApiController
     {
         $product->delete();
         return $this->success('OK',$product);
+    }
+
+
+    public function searchProducts($search = null)
+    {
+        $products = new ProductCollection (Product::with('brand','category')
+                ->where('name','like','%'.$search.'%')
+                ->orderBy('id')
+                ->paginate(6));
+
+        return $this->success('OK',$products);
+
     }
 }
