@@ -1,0 +1,647 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "MailUp - Backend Test",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/v1/brands": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Mostrar marcas existentes",
+                "description": "Permite detallar los marcas registrados.",
+                "operationId": "265f173d55c77d2ffffe46be4ba57fa8",
+                "responses": {
+                    "200": {
+                        "description": "Operacion Exitosa."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Registrar nueva Marca",
+                "description": "Permite registrar una nueva Marca.",
+                "operationId": "354e334c26df48b4a20817df45f8fa7b",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre de la Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "422": {
+                        "description": "El campo ya esta en uso."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    }
+                }
+            }
+        },
+        "/api/v1/brands/{id}": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Obtener información de una Marca",
+                "description": "Devuelve datos de una Marca específica según Id. ",
+                "operationId": "41ee41610cd373b7f6b3ecf7b8253877",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese Id de una Marca existente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa."
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    },
+                    "404": {
+                        "description": "Recurso no encontrado."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Actualizar una Marca existente",
+                "description": "Permite modificar datos de una Marca existente.",
+                "operationId": "818bae2e9412f13a474dd3af9c4049b9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre de la Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "422": {
+                        "description": "El campo ya esta en uso."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Eliminar Marca existente",
+                "description": "Permite eliminar un registro y no devuelve contenido.",
+                "operationId": "a5475e12bf803edae8884e43dca17735",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de Marca a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa."
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    },
+                    "404": {
+                        "description": "Recurso no encontrado."
+                    }
+                }
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Categorías"
+                ],
+                "summary": "Mostrar categorias existentes",
+                "description": "Permite detallar los categorias registradas.",
+                "operationId": "e225c2b7eb5daf7fb16e00f4f07ff030",
+                "responses": {
+                    "200": {
+                        "description": "Operacion Exitosa."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categorías"
+                ],
+                "summary": "Registrar nueva Categoría",
+                "description": "Permite registrar una nueva Categoría.",
+                "operationId": "dd76b8d73b7ea8b4951f03d7c0904c92",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre de la Categoría",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "422": {
+                        "description": "El campo ya esta en uso."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categorías"
+                ],
+                "summary": "Obtener información de una Categoría",
+                "description": "Devuelve datos de una Categoría específica según Id. ",
+                "operationId": "9c4934d1b68a6d4440ec72cfc8ae7074",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese Id de una Categoría existente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa."
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    },
+                    "404": {
+                        "description": "Recurso no encontrado."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categorías"
+                ],
+                "summary": "Actualizar una Categoría existente",
+                "description": "Permite modificar datos de una Categoría existente.",
+                "operationId": "988e8695bc991d7f8e40131db5ba7a76",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de Categoría",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre de la Categoría",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "422": {
+                        "description": "El campo ya esta en uso."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categorías"
+                ],
+                "summary": "Eliminar Categoría existente",
+                "description": "Permite eliminar un registro y no devuelve contenido.",
+                "operationId": "37196d259228d2274dd9dbef8b00e547",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de Categoría a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa."
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    },
+                    "404": {
+                        "description": "Recurso no encontrado."
+                    }
+                }
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Mostrar productos existentes",
+                "description": "Permite detallar los productos registrados.",
+                "operationId": "1ce27f90dd8c39cea9520bf45d58c7c2",
+                "responses": {
+                    "200": {
+                        "description": "Operacion Exitosa."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Registrar nuevo producto",
+                "description": "Permite registrar un nuevo Producto.",
+                "operationId": "acaa0d3fdc74fd4b534e70fc016cf7f1",
+                "parameters": [
+                    {
+                        "name": "brand_id",
+                        "in": "query",
+                        "description": "Id de Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Id de Categoría",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Descripción",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Precio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "price_sale",
+                        "in": "query",
+                        "description": "Precio Venta",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "stock",
+                        "in": "query",
+                        "description": "Stock",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "image"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "description": "Imagen",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "422": {
+                        "description": "El campo ya esta en uso."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    }
+                }
+            }
+        },
+        "/api/v1/products/{id}": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Obtener información de un Producto",
+                "description": "Devuelve datos de un Producto específica según Id. ",
+                "operationId": "249e765b6489191fb8167474db8867f7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ingrese Id de un Producto existente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa."
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    },
+                    "404": {
+                        "description": "Recurso no encontrado."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Actualizar un Producto existente",
+                "description": "Permite modificar datos de un Producto existente.",
+                "operationId": "436a5b5d1aff1d5fd341389786161044",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de Producto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "brand_id",
+                        "in": "query",
+                        "description": "Id de Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Id de Categoría",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nombre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Descripción",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Precio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "price_sale",
+                        "in": "query",
+                        "description": "Precio Venta",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "stock",
+                        "in": "query",
+                        "description": "Stock",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "image"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "description": "Imagen",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "422": {
+                        "description": "El campo ya esta en uso."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Eliminar Producto existente",
+                "description": "Permite eliminar un registro y no devuelve contenido.",
+                "operationId": "cc01048629edd9759ba1d7ffc989f667",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de Producto a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa."
+                    },
+                    "401": {
+                        "description": "Sin autenticar."
+                    },
+                    "403": {
+                        "description": "Prohibido. No posee permisos para ejecutar esta accion."
+                    },
+                    "404": {
+                        "description": "Recurso no encontrado."
+                    }
+                }
+            }
+        }
+    }
+}
